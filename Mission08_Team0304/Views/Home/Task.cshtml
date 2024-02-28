@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Add/Edit Task";
+}
+
+@model Tasks
+
+<h1>Task</h1>
+
+<form method="post">
+    <input asp-for="TaskId" type="hidden" />
+
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" />
+    <br />
+    <label asp-for="dueDate">Due Date</label>
+    <input asp-for="dueDate" />
+    <br />
+    <label asp-for="Quadrant">Quadrant</label>
+    <select asp-for="Quadrant">
+        <option value=""> -- Select a quadrant -- </option>
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+    </select>
+    <br />
+    <label asp-for="CategoryId">Category</label>
+    <select asp-for="CategoryId">
+        <option value=""> --Select a category-- </option>
+        @foreach (Category c in ViewBag.Category)
+        {
+            <option value="@c.CategoryId">@c.Category</option>
+        }
+    </select>
+    <br />
+    <label asp-for="Completed">Completed</label>
+    <input asp-for="Completed" type="checkbox" />
+    <br />
+    <br />
+    <button type="submit">Submit</button>
+
+    <div asp-validation-summary="All"></div>
+
+</form>
