@@ -18,7 +18,7 @@ namespace Mission08_Team0304.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Task()
         {
             return View();
         }
