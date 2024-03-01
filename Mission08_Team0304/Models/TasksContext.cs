@@ -4,13 +4,13 @@ using System.Reflection.Emit;
 
 namespace Mission08_Team0304.Models
 {
-    public class TaskContext : DbContext
+    public class TasksContext : DbContext
     {
-        public TaskContext(DbContextOptions<TaskContext> options) : base(options)
+        public TasksContext(DbContextOptions<TasksContext> options) : base(options)
         {
         }
 
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

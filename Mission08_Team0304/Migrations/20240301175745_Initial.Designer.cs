@@ -10,8 +10,8 @@ using Mission08_Team0304.Models;
 
 namespace Mission08_Team0304.Migrations
 {
-    [DbContext(typeof(TaskContext))]
-    [Migration("20240301013106_Initial")]
+    [DbContext(typeof(TasksContext))]
+    [Migration("20240301175745_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace Mission08_Team0304.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Mission08_Team0304.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0304.Models.Tasks", b =>
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace Mission08_Team0304.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Mission08_Team0304.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0304.Models.Tasks", b =>
                 {
                     b.HasOne("Mission08_Team0304.Models.Category", "Category")
                         .WithMany()

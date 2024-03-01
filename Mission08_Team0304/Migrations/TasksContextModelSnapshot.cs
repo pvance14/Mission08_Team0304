@@ -9,8 +9,8 @@ using Mission08_Team0304.Models;
 
 namespace Mission08_Team0304.Migrations
 {
-    [DbContext(typeof(TaskContext))]
-    partial class TaskContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TasksContext))]
+    partial class TasksContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace Mission08_Team0304.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Mission08_Team0304.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0304.Models.Tasks", b =>
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace Mission08_Team0304.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Mission08_Team0304.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0304.Models.Tasks", b =>
                 {
                     b.HasOne("Mission08_Team0304.Models.Category", "Category")
                         .WithMany()
