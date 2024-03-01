@@ -8,7 +8,7 @@ namespace Mission08_Team0304.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger) //constructor
         {
             _logger = logger;
         }
@@ -22,11 +22,17 @@ namespace Mission08_Team0304.Controllers
         {
             return View();
         }
+        public IActionResult Quadrant()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }
