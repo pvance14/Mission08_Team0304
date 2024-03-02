@@ -37,6 +37,45 @@ namespace Mission08_Team0304.Controllers
             return View("Quadrant");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id) // this makes our edit button returns the right record
+        {
+            var recordToEdit = _context.Tasks
+                .Single(x => x.TaskId == id);
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.Name)
+                .ToList();
+            return View("Task", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Task updatedInfo) // this makes sure that our edits are saved
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Quadrant"); // this makes sure the collection view is properly shown
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id) // gets the record we're going to delete
+        {
+            var recordToDelete = _context.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Tasks task) // actually deletes the movie
+        {
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
+
+            return RedirectToAction("Quadrant");
+        }
+
         // other controllers necessary
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
