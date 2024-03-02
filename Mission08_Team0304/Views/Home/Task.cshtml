@@ -29,7 +29,7 @@
         <option value=""> --Select a category-- </option>
         @foreach (Category c in ViewBag.Category)
         {
-            <option value="@c.CategoryId">@c.Category</option>
+            <option value="@c.CategoryId">@c.Name</option>
         }
     </select>
     <br />

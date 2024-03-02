@@ -7,25 +7,26 @@ namespace Mission08_Team0304.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private TasksContext _context;
 
-        public HomeController(ILogger<HomeController> logger) //constructor
+        public HomeController(ILogger<HomeController> logger, TasksContext temp)
         {
+            _context = temp;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View("Quadrant");
         }
 
         public IActionResult Task()
         {
             return View();
         }
-        public IActionResult Quadrant()
-        {
-            return View();
-        }
+
+
+        // other controllers necessary
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
