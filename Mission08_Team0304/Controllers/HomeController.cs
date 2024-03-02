@@ -103,7 +103,7 @@ namespace Mission08_Team0304.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Tasks task) // actually deletes the movie
+        public IActionResult Delete(Tasks task) // actually deletes the task
         {
             _context.Tasks.Remove(task);
             _context.SaveChanges();
