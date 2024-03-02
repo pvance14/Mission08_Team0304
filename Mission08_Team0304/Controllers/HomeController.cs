@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission08_Team0304.Models;
 using System.Diagnostics;
 
@@ -17,7 +18,9 @@ namespace Mission08_Team0304.Controllers
 
         public IActionResult Index()
         {
-            return View("Quadrant");
+            var tasks = _context.Tasks.Include(t => t.Category).ToList();
+            return View("Quadrant", tasks);
+            // return View("Quadrant");
         }
 
         [HttpGet]
