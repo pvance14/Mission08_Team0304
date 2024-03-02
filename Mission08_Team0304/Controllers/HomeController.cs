@@ -42,10 +42,15 @@ namespace Mission08_Team0304.Controllers
         [HttpPost]
         public IActionResult Task(Tasks response)
         {
-            _context.Tasks.Add(response);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Tasks.Add(response);
+                _context.SaveChanges();
 
-            return View("Quadrant");
+                return RedirectToAction("Index"); // Redirect to Quadrant view after adding task
+            }
+            ViewBag.Categories = _context.Categories; // Add this line to repopulate categories in case of validation error
+            return View("Task", response); // If model state is not valid, return back to the form with validation errors
         }
 
         [HttpGet]
@@ -61,13 +66,32 @@ namespace Mission08_Team0304.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Task updatedInfo) // this makes sure that our edits are saved
+        public IActionResult Edit(Tasks updatedInfo)
         {
-            _context.Update(updatedInfo);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                if (updatedInfo.Completed == "True")
+                {
+                    // Delete the task from the database
+                    _context.Tasks.Remove(updatedInfo);
+                    _context.SaveChanges();
 
-            return RedirectToAction("Index"); // this makes sure the quadrant view is properly shown
+                    return RedirectToAction("Index"); // Redirect to Index page after deleting task
+                }
+                else
+                {
+                    // Update the task
+                    _context.Update(updatedInfo);
+                    _context.SaveChanges();
+
+                    return RedirectToAction("Index"); // Redirect to Index page after updating task
+                }
+            }
+
+            // If model state is not valid, return back to the form with validation errors
+            return View("Edit", updatedInfo);
         }
+
 
         [HttpGet]
         public IActionResult Delete(int id) // gets the record we're going to delete
