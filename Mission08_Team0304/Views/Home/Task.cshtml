@@ -34,7 +34,11 @@
     </select>
     <br />
     <label asp-for="Completed">Completed</label>
-    <input asp-for="Completed" type="checkbox" />
+    <select asp-for="Completed">
+        <option value=""> --Select an option-- </option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
     <br />
     <br />
     <button type="submit">Submit</button>

@@ -14,6 +14,6 @@ namespace Mission08_Team0304.Models
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
-        public bool Completed { get; set; }
+        public string? Completed { get; set; }
     }
 }
