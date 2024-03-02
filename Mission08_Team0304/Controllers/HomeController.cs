@@ -19,9 +19,17 @@ namespace Mission08_Team0304.Controllers
         public IActionResult Index()
         {
             var tasks = _context.Tasks.Include(t => t.Category).ToList();
-            return View("Quadrant", tasks);
-            // return View("Quadrant");
+            if (tasks != null && tasks.Any()) // Check if tasks is not null and not empty
+            {
+                return View("Quadrant", tasks);
+            }
+            else
+            {
+                // If tasks is null or empty, handle the error gracefully
+                return View("Quadrant"); // Example: return an error view
+            }
         }
+
 
         [HttpGet]
         public IActionResult Task()
@@ -53,7 +61,7 @@ namespace Mission08_Team0304.Controllers
         }
 
         [HttpPost]
-        public IActionResult Task(Task updatedInfo) // this makes sure that our edits are saved
+        public IActionResult Edit(Task updatedInfo) // this makes sure that our edits are saved
         {
             _context.Update(updatedInfo);
             _context.SaveChanges();
