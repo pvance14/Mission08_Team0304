@@ -2,11 +2,11 @@
     ViewData["Title"] = "Quadrant";
 }
 
-@model List<Task>
+@model List<Tasks>
 
 <div class="container">
     <h1>Header</h1>
-    
+
     <div class="container text-center bg-light" style="max-width: 700px;">
         <div class="row" style="height: 50px">
             <div class="col p-2 border" style="max-width: 50px">
@@ -45,7 +45,24 @@
             <div class="col p-2 border">
                 <h4>Quadrant 2</h4>
                 <div class="quadrant-tasks">
-
+                    @foreach (var task in Model.Where(t => t.Quadrant == "II"))
+                    {
+                        <div class="quadrant-task row" style="border: 1px solid grey; border-width: 1px 0 1px 0">
+                            <div class="col-1 p-0">
+                                <span class="material-symbols-outlined" style="color: @(task.Completed == true ? "green" : "red")">done</span>
+                            </div>
+                            <div class="col-6 p-0" style="text-align: start">
+                                <span class="title">@task.Name</span>
+                            </div>
+                            <div class="col-3 p-0">
+                                <span class="category bg-primary p-1" style="font-size: 10px; color: white; border-radius: 4px">@task.Category?.Name</span>
+                            </div>
+                            <div class="col-2 d-flex p-0">
+                                <a><span class="material-symbols-outlined">edit</span></a>
+                                <a><span class="material-symbols-outlined">delete</span></a>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -56,13 +73,11 @@
             <div class="col p-2 border">
                 <h4>Quadrant 3</h4>
                 <div class="quadrant-tasks">
-                        
                 </div>
             </div>
             <div class="col p-2 border">
                 <h4>Quadrant 4</h4>
                 <div class="quadrant-tasks">
-                        
                 </div>
             </div>
         </div>
