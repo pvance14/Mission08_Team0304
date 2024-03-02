@@ -20,11 +20,22 @@ namespace Mission08_Team0304.Controllers
             return View("Quadrant");
         }
 
+        [HttpGet]
         public IActionResult Task()
         {
-            return View();
+            ViewBag.Categories = _context.Categories;
+
+            return View("Task", new Tasks());
         }
 
+        [HttpPost]
+        public IActionResult Task(Tasks response)
+        {
+            _context.Tasks.Add(response);
+            _context.SaveChanges();
+
+            return View("Quadrant");
+        }
 
         // other controllers necessary
 
