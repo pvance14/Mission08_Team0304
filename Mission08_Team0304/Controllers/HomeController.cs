@@ -53,12 +53,12 @@ namespace Mission08_Team0304.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Task updatedInfo) // this makes sure that our edits are saved
+        public IActionResult Task(Task updatedInfo) // this makes sure that our edits are saved
         {
             _context.Update(updatedInfo);
             _context.SaveChanges();
 
-            return RedirectToAction("Quadrant"); // this makes sure the collection view is properly shown
+            return RedirectToAction("Index"); // this makes sure the quadrant view is properly shown
         }
 
         [HttpGet]
@@ -76,7 +76,7 @@ namespace Mission08_Team0304.Controllers
             _context.Tasks.Remove(task);
             _context.SaveChanges();
 
-            return RedirectToAction("Quadrant");
+            return RedirectToAction("Index");
         }
 
         // other controllers necessary
